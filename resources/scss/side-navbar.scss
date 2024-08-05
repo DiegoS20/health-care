@@ -13,6 +13,8 @@
         grid-template-rows: 50% 1fr;
         border-right: 2px solid var(--grey);
         height: 100dvh;
+        background-color: #fff;
+        line-height: unset;
 
         .icon-container {
             margin: 0 25%;
@@ -31,6 +33,7 @@
                 align-items: center;
                 padding: 15px 20%;
                 gap: 10px;
+                color: #000;
 
                 &:hover,
                 &.active .material-icons {
