@@ -46,7 +46,7 @@
 <body class="body">
     <nav class="side-navbar">
         <div class="icon-container">
-            <img src="https://picsum.photos/200/200" alt="">
+            <img src="{{ asset('images/logo.png') }}" alt="">
         </div>
         <div class="navbar-items">
             @foreach ($routes as $route)
