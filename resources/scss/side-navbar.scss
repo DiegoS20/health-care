@@ -47,9 +47,11 @@
         }
     }
 
-    main {
+    .main {
         min-height: 0;
         max-height: 100%;
+        display: grid;
+        grid-template-rows: 15dvh 1fr;
 
         .header {
             height: 15dvh;

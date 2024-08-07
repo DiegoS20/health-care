@@ -58,7 +58,7 @@
             @endforeach
         </div>
     </nav>
-    <main>
+    <main class="main">
         <header class="header">
             <h1>@yield('title')</h1>
             <div class="doctor">
