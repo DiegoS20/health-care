@@ -1,0 +1,37 @@
+.search-add-bar {
+    display: grid;
+    grid-template-columns: 85% 1fr;
+    gap: 50px;
+    align-items: center;
+
+    #search-add-bar-form {
+        background-color: #fff;
+        border-radius: 7.5px;
+        padding-left: 25px;
+        padding-right: 50px;
+
+        .row {
+            margin-bottom: 0;
+
+            .input-field {
+                input {
+                    border-bottom: none;
+
+                    &[type="search"]:focus + label {
+                        color: #000;
+                    }
+                }
+
+                .prefix.active {
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    & > i.material-icons {
+        color: var(--cyan);
+        cursor: pointer;
+        user-select: none;
+    }
+}
