@@ -71,6 +71,12 @@
         </div>
     </main>
     <script src="{{ asset('js/materialize.min.js') }} "></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, {});
+        });
+    </script>
     @yield('scripts')
 </body>
 
