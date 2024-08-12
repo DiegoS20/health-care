@@ -1,0 +1,20 @@
+.table {
+    width: 100%;
+    display: grid;
+    background-color: var(--cyan);
+    gap: 1.5px;
+    padding: 1.5px;
+
+    .table-header {
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .table-data {
+        text-align: center;
+        background-color: #fff;
+        padding: 25px;
+    }
+}
