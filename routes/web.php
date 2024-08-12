@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MedicinaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,9 +16,10 @@ Route::prefix('dashboard')->group(function () {
         return view('dashboard.citas');
     })->name('citas');
 
-    Route::get('/medicinas', function () {
-        return view('dashboard.medicinas');
-    })->name('medicinas');
+    Route::resource('/medicinas', MedicinaController::class)->names([
+        'index' => 'medicinas',
+        'store' => 'create-medicina'
+    ]);
 
     Route::get('/pacientes', function () {
         return view('dashboard.pacientes');
