@@ -33,6 +33,6 @@
 @endphp
 
 @section('content')
-    <x-search-add-bar searchUrl="{{ route('medicinas') }}" modalId="modal1" />
+    <x-search-add-bar searchUrl="{{ route('medicinas') }}" routeName="create-medicina-form" />
     <x-table :headers="$headers" :tableData="$data" />
 @endsection

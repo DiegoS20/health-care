@@ -13,8 +13,32 @@
     }
 
     .table-data {
-        text-align: center;
         background-color: #fff;
         padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+
+            a {
+                display: block;
+                color: #fff;
+                padding: 15%;
+                aspect-ratio: 1;
+                border-radius: 100%;
+
+                &#delete {
+                    background-color: #ea2d40;
+                }
+
+                &#edit {
+                    background-color: var(--cyan);
+                }
+            }
+        }
     }
 }

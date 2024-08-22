@@ -8,7 +8,9 @@
             </div>
         </div>
     </form>
-    <i class="medium material-icons modal-trigger" data-target="{{ $modalId }}">add_circle</i>
+    <a href="{{ route($routeName) }}">
+        <i class="medium material-icons" href="{{ route($routeName) }}">add_circle</i>
+    </a>
 </div>
 <script>
     const searchAddBar = document.querySelector('#search-add-bar-form .input-field');

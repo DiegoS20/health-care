@@ -7,6 +7,13 @@
         @foreach ($headers as $h)
             <div class="table-data">{{ $d[$h] }}</div>
         @endforeach
-        <div class="table-data"></div>
+        <div class="table-data actions">
+            <a href="" class="small material-icons" id="delete" title="Eliminar">
+                delete_forever
+            </a>
+            <a href="" class="small material-icons" id="edit" title="Editar">
+                edit
+            </a>
+        </div>
     @endforeach
 </div>

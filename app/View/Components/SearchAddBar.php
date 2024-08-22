@@ -11,7 +11,7 @@ class SearchAddBar extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $searchUrl, public string $modalId)
+    public function __construct(public string $searchUrl, public string $routeName)
     {
         //
     }

@@ -16,6 +16,14 @@ class MedicinaController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('dashboard.medicinas-form');
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -36,7 +44,10 @@ class MedicinaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('dashboard.medicinas-form', [
+            'medicine' => 'Test',
+            'quantity' => 100
+        ]);
     }
 
     /**
