@@ -25,7 +25,9 @@ Route::prefix('dashboard')->group(function () {
         'index' => 'medicinas',
         'create' => 'create-medicina-form',
         'store' => 'create-medicina',
-        'edit' => 'edit-medicina'
+        'edit' => 'edit-medicina',
+        'update' => 'update-medicina',
+        'destroy' => 'destroy-medicina'
     ]);
 
     Route::resource('/pacientes', PacienteController::class)->names([

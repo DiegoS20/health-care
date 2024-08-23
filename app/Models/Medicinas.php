@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Medicinas extends Model
 {
+    public $primaryKey = 'idMedicina';
+
     protected $fillable = [
         'nombre',
         'stock',

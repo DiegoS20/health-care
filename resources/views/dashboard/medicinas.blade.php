@@ -12,27 +12,20 @@
 @endsection
 
 @php
-    $headers = ['Nombre', 'Presentación', 'Concentración', 'Cantidad disponible', 'Precio'];
+    $headers = ['Nombre', 'Stock'];
+    $data = [];
 
-    $data = [
-        [
-            'Nombre' => 'Paracetamol',
-            'Presentación' => 'Tabletas',
-            'Concentración' => '500 mg',
-            'Cantidad disponible' => 100,
-            'Precio' => '$5.00',
-        ],
-        [
-            'Nombre' => 'Ibuprofeno',
-            'Presentación' => 'Cápsulas',
-            'Concentración' => '200 mg',
-            'Cantidad disponible' => 30,
-            'Precio' => '$8.00',
-        ],
-    ];
+    foreach ($medicinas as $m) {
+        array_push($data, [
+            'id' => $m['idMedicina'],
+            'Nombre' => $m['nombre'],
+            'Stock' => $m['stock'],
+        ]);
+    }
 @endphp
 
 @section('content')
     <x-search-add-bar searchUrl="{{ route('medicinas') }}" routeName="create-medicina-form" />
-    <x-table :headers="$headers" :tableData="$data" />
+    <x-table :headers="$headers" :tableData="$data" editRoute="edit-medicina" deleteRoute="destroy-medicina"
+        paramName="medicina" />
 @endsection

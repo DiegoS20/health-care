@@ -11,8 +11,13 @@ class Table extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public array $headers, public array $tableData)
-    {
+    public function __construct(
+        public array $headers,
+        public array $tableData,
+        public string $editRoute,
+        public string $deleteRoute,
+        public string $paramName
+    ) {
         //
     }
 

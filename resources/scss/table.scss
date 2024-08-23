@@ -24,12 +24,15 @@
             gap: 10px;
             justify-content: center;
 
-            a {
+            a,
+            button {
                 display: block;
                 color: #fff;
-                padding: 15%;
+                padding: 15px;
                 aspect-ratio: 1;
                 border-radius: 100%;
+                cursor: pointer;
+                border: none;
 
                 &#delete {
                     background-color: #ea2d40;
