@@ -3,6 +3,7 @@
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\MedicinaController;
 use App\Http\Controllers\PacienteController;
+use App\Models\Citas;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,8 @@ Route::get('/auth', function () {
 // Rutas protegidas por middleware
 Route::middleware(['authenticatedUser'])->prefix('dashboard')->group(function () {
     Route::get('/', function () {
-        return view('dashboard.index');
+        $citas = Citas::where('estado', 'P')->with('paciente')->get();
+        return view('dashboard.index', ['citas' => $citas]);
     })->name('dashboard-index');
 
     Route::get('/citas/pendientes', [CitasController::class, 'pendientes'])->name('citas-pendientes');
