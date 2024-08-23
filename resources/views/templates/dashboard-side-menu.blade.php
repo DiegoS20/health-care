@@ -21,6 +21,13 @@
             'title' => 'Pacientes',
         ],
     ];
+
+    function is_in_route($route_name)
+    {
+        $is_index = Request::route()->getName() == 'dashboard-index' && $route_name == 'dashboard-index';
+        $is_in_route = !$is_index && str_contains(Request::url(), route($route_name));
+        return $is_index || $is_in_route;
+    }
 @endphp
 
 <!doctype html>
@@ -50,7 +57,7 @@
         </div>
         <div class="navbar-items">
             @foreach ($routes as $route)
-                <a class="navbar-item {{ Route::is($route['route_name']) ? 'active' : '' }}"
+                <a class="navbar-item {{ is_in_route($route['route_name']) ? 'active' : '' }}"
                     href="{{ route($route['route_name']) }}">
                     <li class="material-icons">{{ $route['icon'] }}</li>
                     <span>{{ $route['title'] }}</span>

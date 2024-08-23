@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MedicinaController;
+use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,16 +28,17 @@ Route::prefix('dashboard')->group(function () {
         'edit' => 'edit-medicina'
     ]);
 
-    Route::get('/pacientes', function () {
-        return view('dashboard.pacientes');
-    })->name('pacientes');
+    Route::resource('/pacientes', PacienteController::class)->names([
+        'index' => 'pacientes',
+        'create' => 'create-paciente-form'
+    ]);
 
-    
+
     Route::get('/consultas/{view}', function ($view) {
         $allowedViews = ['nueva-consulta', 'consultas-pendientes', 'consultas-realizadas'];
         if (in_array($view, $allowedViews)) {
             return view("dashboard.partials.$view");
         }
-        abort(404); 
+        abort(404);
     })->name('consultas-dinamicas');
 });

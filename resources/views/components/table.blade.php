@@ -5,7 +5,7 @@
     <div class="table-header">&nbsp;</div>
     @foreach ($tableData as $d)
         @foreach ($headers as $h)
-            <div class="table-data">{{ $d[$h] }}</div>
+            <div class="table-data">{!! $d[$h] !!}</div>
         @endforeach
         <div class="table-data actions">
             <a href="" class="small material-icons" id="delete" title="Eliminar">
