@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
+    protected $primaryKey = "idPaciente";
     protected $fillable = [
         'nombres',
         'apellidos',
@@ -15,9 +16,4 @@ class Paciente extends Model
         'sexo',
         'codigo',
     ];
-
-    protected $casts = [
-        'fecha_nacimiento' => 'date',
-    ];
-
 }

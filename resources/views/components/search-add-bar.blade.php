@@ -3,7 +3,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">search</i>
-                <input type="search" class="validate" name="q" />
+                <input type="search" class="validate" name="q" value="{{ request()->query('q') ?? '' }}" />
                 <label class="active" for="icon_prefix2">Busca aquí</label>
             </div>
         </div>

@@ -32,7 +32,12 @@ Route::prefix('dashboard')->group(function () {
 
     Route::resource('/pacientes', PacienteController::class)->names([
         'index' => 'pacientes',
-        'create' => 'create-paciente-form'
+        'create' => 'create-paciente-form',
+        'store' => 'create-paciente',
+        'edit' => 'edit-paciente',
+        'update' => 'update-paciente',
+        'destroy' => 'destroy-paciente',
+        'show' => 'historial-paciente'
     ]);
 
 

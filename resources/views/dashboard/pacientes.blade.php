@@ -12,20 +12,25 @@
 @endsection
 
 @php
-    $headers = ['ID Paciente', 'Nombre', 'Fecha de nacimiento', 'Número de contacto', 'Historial'];
+    $headers = ['ID Paciente', 'Nombre', 'Fecha de nacimiento', 'Número de contacto', 'Sexo', 'Historial'];
 
-    $data = [
-        [
-            'ID Paciente' => 1,
-            'Nombre' => 'Paracetamol',
-            'Fecha de nacimiento' => '11/11/2000',
-            'Número de contacto' => '60304689',
-            'Historial' => '<h5>ICONO</h5>',
-        ],
-    ];
+    $data = [];
+    foreach ($pacientes as $p) {
+        $historial = route('historial-paciente', ['paciente' => $p['idPaciente']]);
+        array_push($data, [
+            'id' => $p['idPaciente'],
+            'ID Paciente' => $p['idPaciente'],
+            'Nombre' => $p['nombres'] . ' ' . $p['apellidos'],
+            'Fecha de nacimiento' => date('d/m/Y', strtotime($p['fecha_nacimiento'])),
+            'Número de contacto' => $p['telefono'],
+            'Sexo' => $p['sexo'] == 'H' ? 'Masculino' : 'Femenino',
+            'Historial' => "<a href='" . $historial . "' class='material-icons' style='color: var(--cyan)'>history</a>",
+        ]);
+    }
 @endphp
 
 @section('content')
     <x-search-add-bar searchUrl="{{ route('pacientes') }}" routeName="create-paciente-form" />
-    <x-table :headers="$headers" :tableData="$data" />
+    <x-table :headers="$headers" :tableData="$data" editRoute="edit-paciente" deleteRoute="destroy-paciente"
+        paramName="paciente" />
 @endsection
