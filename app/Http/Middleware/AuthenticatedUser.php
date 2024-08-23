@@ -24,6 +24,6 @@ class AuthenticatedUser
         }
 
         // Si no hay ninguna sesión activa, redirige al login
-        return redirect('/login/paciente')->withErrors(['auth' => 'Debe iniciar sesión para acceder a esta página.']);
+        return redirect()->route('loginuser')->withErrors(['auth' => 'Debe iniciar sesión para acceder a esta página.']);
     }
 }
