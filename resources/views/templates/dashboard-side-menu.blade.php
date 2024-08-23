@@ -63,6 +63,13 @@
                     <span>{{ $route['title'] }}</span>
                 </a>
             @endforeach
+            <form method="POST" action="{{ route('logout') }}" class="navbar-item">
+                @csrf
+                <button style="cursor: pointer; background: none; border: none">
+                    <li class="material-icons">exit_to_app</li>
+                    <span>Logout</span>
+                </button>
+            </form>
         </div>
     </nav>
     <main class="main">

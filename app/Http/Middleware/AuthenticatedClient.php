@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthenticatedUser
+class AuthenticatedClient
 {
     /**
      * Maneja una solicitud entrante.
@@ -19,11 +19,11 @@ class AuthenticatedUser
     public function handle($request, Closure $next)
     {
         // Verifica si el doctor ha iniciado sesión o si el usuario es un paciente autenticado
-        if (session()->has('doctor_logged_in') || Auth::check()) {
+        if (session()->has('cliente_logged_id') || Auth::check()) {
             return $next($request);
         }
 
         // Si no hay ninguna sesión activa, redirige al login
-        return redirect()->route('login-doctor')->withErrors(['auth' => 'Debe iniciar sesión para acceder a esta página.']);
+        return redirect()->route('login-user')->withErrors(['auth' => 'Debe iniciar sesión para acceder a esta página.']);
     }
 }

@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function showDoctorLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login-doctor');
     }
 
     public function showPacienteLoginForm()
     {
-        return view('auth.loginuser');
+        return view('auth.login-user');
     }
 
     public function loginAsDoctor(Request $request)
@@ -23,12 +24,14 @@ class AuthController extends Controller
         $doctorEmail = env('DOCTOR_EMAIL');
         $doctorPassword = env('DOCTOR_PASSWORD');
 
-        if ($request->input('email') === $doctorEmail &&
-            $request->input('password') === $doctorPassword) {
+        if (
+            $request->input('email') === $doctorEmail &&
+            Hash::check($request->input('password'), $doctorPassword)
+        ) {
 
             session(['doctor_logged_in' => true]);
 
-            return redirect()->route('dashboard.index');
+            return redirect()->route('dashboard-index');
         }
 
         return redirect()->back()->withErrors(['credentials' => 'Credenciales incorrectas para el doctor.']);
@@ -41,8 +44,9 @@ class AuthController extends Controller
         $paciente = Paciente::where('codigo', $codigo)->first();
 
         if ($paciente) {
-            Auth::login($paciente);
-            return redirect()->route('dashboard.index');
+            session(['cliente_logged_id' => $paciente->idPaciente]);
+
+            return redirect()->route('index-cliente');
         }
 
         return redirect()->back()->withErrors(['codigo' => 'Código de paciente no válido.']);
@@ -52,6 +56,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         session()->forget('doctor_logged_in');
-        return redirect('/');
+        session()->forget('cliente_logged_id');
+        return to_route('login-doctor');
     }
 }

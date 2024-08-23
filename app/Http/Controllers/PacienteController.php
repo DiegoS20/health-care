@@ -61,12 +61,14 @@ class PacienteController extends Controller
         )
             return redirect('pacientes');
 
-        $validated['codigo'] = Hash::make(strval(rand(10000, 99999)), [
-            'rounds' => 10
-        ]);
+        $codigo = strval(rand(10000, 99999));
+        $validated['codigo'] = $codigo;
         Paciente::create($validated);
 
-        return to_route('pacientes');
+        return to_route('pacientes', [
+            'nombre' => $validated['nombres'] . ' ' . $validated['apellidos'],
+            'codigo' => $codigo
+        ]);
     }
 
     /**
