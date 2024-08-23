@@ -71,7 +71,10 @@ class PacienteController extends Controller
      */
     public function show(string $id)
     {
-        $citas = Citas::where('idPaciente', $id)->with('paciente')->get();
+        $citas = Citas::where('idPaciente', $id)
+            ->orderBy('estado', 'asc')
+            ->orderBy('fecha', 'desc')
+            ->with('paciente')->get();
         return view('dashboard.pacientes-historial', compact('citas'));
     }
 

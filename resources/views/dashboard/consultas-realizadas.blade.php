@@ -2,10 +2,14 @@
 
 @section('subcontent')
     <div class="card p-4">
-        <h3 class="mb-4">Historial de Consultas Pendientes</h3>
+        <h3 class="mb-4">Historial de Consultas realizadas</h3>
         <div class="row d-flex justify-content-start flex-wrap">
             @foreach ($citas as $c)
-                <div class="col-md-4 col-sm-6 col-12 mb-4 ">
+                <a href="{{ route('detalle-consulta', [
+                    'idPaciente' => $c->idPaciente,
+                    'idCita' => $c->idCita,
+                ]) }}"
+                    class="col-md-4 col-sm-6 col-12 mb-4 ">
                     <div class="consulta-card d-flex align-items-center">
                         <img src="{{ asset('images/consulta.png') }}" alt="Consulta Icon" class="consulta-icon">
                         <div class="consulta-info">
@@ -14,7 +18,7 @@
                             <span class="estado-realizado">Realizadas</span>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>
