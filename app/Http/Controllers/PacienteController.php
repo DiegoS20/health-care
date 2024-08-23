@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Citas;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -68,7 +69,8 @@ class PacienteController extends Controller
      */
     public function show(string $id)
     {
-        return view('dashboard.pacientes-historial');
+        $citas = Citas::where('idPaciente', $id)->with('paciente')->get();
+        return view('dashboard.pacientes-historial', compact('citas'));
     }
 
     /**

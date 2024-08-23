@@ -11,32 +11,25 @@
         <h5>Historial de consultas</h5>
 
         <div class="consultas">
-            <div class="consulta">
-                <img src="{{ asset('images/consulta.png') }}" alt="Consulta Icon" class="consulta-icon">
-                <div class="information">
-                    <div class="name-date">
-                        <span class="name">Diego Saravia</span>
-                        <div class="day">23/08/2024</div>
+            @foreach ($citas as $c)
+                <div class="consulta">
+                    <img src="{{ asset('images/consulta.png') }}" alt="Consulta Icon" class="consulta-icon">
+                    <div class="information">
+                        <div class="name-date">
+                            <span class="name">{{ $c->paciente->nombres }} {{ $c->paciente->apellidos }}</span>
+                            <div class="day">{{ date('d/m/Y, H:i', strtotime($c->fecha)) }}</div>
+                        </div>
+                        @if ($c->estado == 'P')
+                            <div class="state pending">Pendiente</div>
+                        @else
+                            <div class="state done">Realizado</div>
+                        @endif
                     </div>
-                    <div class="state pending">Pendiente</div>
-                </div>
-                <div class="details">
-                    <a href='' class='material-icons'>history</a>
-                </div>
-            </div>
-            <div class="consulta">
-                <img src="{{ asset('images/consulta.png') }}" alt="Consulta Icon" class="consulta-icon">
-                <div class="information">
-                    <div class="name-date">
-                        <span class="name">Diego Saravia</span>
-                        <div class="day">23/08/2024</div>
+                    <div class="details">
+                        <a href='' class='material-icons'>history</a>
                     </div>
-                    <div class="state done">Realizado</div>
                 </div>
-                <div class="details">
-                    <a href='' class='material-icons'>history</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
