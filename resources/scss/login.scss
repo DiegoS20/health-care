@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #1ba4ac 
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #FFFFFF;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-card-content {
+    text-align: center;
+}
+
+.login-logo img {
+    max-width: 120px;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1ba4ac;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #1ba4ac;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-field label {
+    font-size: 1rem;
+    color: #1ba4ac;
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    cursor: pointer;
+    color: #1ba4ac;
+}
+
+.toggle-password i {
+    font-size: 1.2rem;
+}
+
+.btn {
+    background-color: #1ba4ac;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background-color: #1ba4ac;
+}
