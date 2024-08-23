@@ -8,6 +8,7 @@ use App\Models\Medicinas;
 use App\Models\Paciente;
 use App\Models\Recetas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PacienteController extends Controller
 {
@@ -60,7 +61,9 @@ class PacienteController extends Controller
         )
             return redirect('pacientes');
 
-        $validated['codigo'] = rand(10000, 99999);
+        $validated['codigo'] = Hash::make(strval(rand(10000, 99999)), [
+            'rounds' => 10
+        ]);
         Paciente::create($validated);
 
         return to_route('pacientes');

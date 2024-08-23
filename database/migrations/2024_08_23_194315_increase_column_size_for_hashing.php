@@ -10,13 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('recetas', function (Blueprint $table) {
-            $table->dropForeign(['idCita']);
-
-            $table->foreign('idCita')
-                ->references('idCita')
-                ->on('citas')
-                ->onDelete('cascade');
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->string('codigo', 100)->change();
         });
     }
 
@@ -25,7 +20,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('recetas', function (Blueprint $table) {
+        Schema::table('pacientes', function (Blueprint $table) {
             //
         });
     }
