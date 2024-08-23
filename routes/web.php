@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\MedicinaController;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,14 @@ Route::prefix('dashboard')->group(function () {
         return view('dashboard.index');
     })->name('dashboard-index');
 
-    Route::get('/citas', function () {
-        return view('dashboard.citas');
-    })->name('citas');
+    Route::get('/citas/pendientes', [CitasController::class, 'pendientes'])->name('citas-pendientes');
+    Route::get('/citas/realizadas', [CitasController::class, 'realizadas'])->name('citas-realizadas');
+
+    Route::resource('/citas', CitasController::class)->names([
+        'index' => 'citas',
+        'create' => 'nueva-cita',
+        'store' => 'store-cita'
+    ]);
 
     Route::resource('/medicinas', MedicinaController::class)->names([
         'index' => 'medicinas',
@@ -39,7 +45,6 @@ Route::prefix('dashboard')->group(function () {
         'destroy' => 'destroy-paciente',
         'show' => 'historial-paciente'
     ]);
-
 
     Route::get('/consultas/{view}', function ($view) {
         $allowedViews = ['nueva-consulta', 'consultas-pendientes', 'consultas-realizadas'];

@@ -16,4 +16,9 @@ class Paciente extends Model
         'sexo',
         'codigo',
     ];
+
+    public function citas()
+    {
+        return $this->hasMany(Citas::class, 'idCita');
+    }
 }

@@ -80,8 +80,11 @@
     <script src="{{ asset('js/materialize.min.js') }} "></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems, {});
+            const modalElems = document.querySelectorAll('.modal');
+            M.Modal.init(modalElems, {});
+
+            const selectElems = document.querySelectorAll('select');
+            M.FormSelect.init(selectElems, {});
         });
     </script>
     @yield('scripts')

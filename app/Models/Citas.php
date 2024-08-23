@@ -7,14 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Citas extends Model
 {
+    protected $primaryKey = 'idCita';
     protected $fillable = [
         'idPaciente',
         'fecha',
         'notas',
-    ];
-
-    protected $casts = [
-        'fecha' => 'date',
     ];
 
 
