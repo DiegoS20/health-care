@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Citas;
+use App\Models\Medicinas;
 use App\Models\Paciente;
+use App\Models\Recetas;
 use Illuminate\Http\Request;
 
 class PacienteController extends Controller
@@ -109,5 +111,47 @@ class PacienteController extends Controller
         Paciente::where('idPaciente', $id)->delete();
 
         return to_route('pacientes');
+    }
+
+    public function detalle(string $idPaciente, string $idCita)
+    {
+        $cita = Citas::where('idCita', $idCita)
+            ->with('recetas')
+            ->first();
+
+        $medicinas = Medicinas::where('stock', '>', 0)->get();
+
+        return view('dashboard.detalle-cita', compact('cita', 'medicinas'));
+    }
+
+    public function guardar_detalle(Request $request, string $idPaciente, string $idCita)
+    {
+        $body = $request->all();
+        $notas_consulta = $body['notas'];
+        $medicinas = $body['medicina'] ?? [];
+        $cantidades = $body['cantidad'] ?? [];
+        $comentarios = $body['comentario'] ?? [];
+
+        $recetas = [];
+        for ($i = 0; $i < count($medicinas); $i++) {
+            $m = $medicinas[$i];
+            $ca = $cantidades[$i];
+            $co = $comentarios[$i];
+            array_push($recetas, [
+                'idMedicina' => intval($m),
+                'idCita' => intval($idCita),
+                'cantidad' => intval($ca),
+                'nota' => $co
+            ]);
+        }
+
+        Citas::where('idCita', $idCita)->update([
+            'notas' => $notas_consulta,
+            'estado' => 'R'
+        ]);
+
+        Recetas::insert($recetas);
+
+        return to_route('historial-paciente', ['paciente' => $idPaciente]);
     }
 }

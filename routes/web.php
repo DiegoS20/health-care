@@ -36,6 +36,9 @@ Route::prefix('dashboard')->group(function () {
         'destroy' => 'destroy-medicina'
     ]);
 
+    Route::get('/pacientes/{idPaciente}/detalle/{idCita}', [PacienteController::class, 'detalle'])->name('detalle-consulta');
+    Route::post('/pacientes/{idPaciente}/detalle/{idCita}', [PacienteController::class, 'guardar_detalle'])->name('guardar_detalle');
+
     Route::resource('/pacientes', PacienteController::class)->names([
         'index' => 'pacientes',
         'create' => 'create-paciente-form',

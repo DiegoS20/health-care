@@ -26,7 +26,11 @@
                         @endif
                     </div>
                     <div class="details">
-                        <a href='' class='material-icons'>history</a>
+                        <a href='{{ route('detalle-consulta', [
+                            'idPaciente' => $c->idPaciente,
+                            'idCita' => $c->idCita,
+                        ]) }}'
+                            class='material-icons'>history</a>
                     </div>
                 </div>
             @endforeach

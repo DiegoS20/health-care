@@ -14,9 +14,13 @@ class Citas extends Model
         'notas',
     ];
 
-
     public function paciente()
     {
         return $this->belongsTo(Paciente::class, 'idPaciente');
+    }
+
+    public function recetas()
+    {
+        return $this->hasMany(Recetas::class, 'idCita', 'idCita');
     }
 }

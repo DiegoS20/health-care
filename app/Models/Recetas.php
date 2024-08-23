@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recetas extends Model
 {
+    protected $primaryKey = 'idReceta';
     protected $fillable = [
         'idMedicina',
         'idCita',
@@ -21,6 +22,6 @@ class Recetas extends Model
 
     public function cita()
     {
-        return $this->belongsTo(Citas::class, 'idCita');
+        return $this->belongsTo(Citas::class, 'idCita', 'idCita');
     }
 }
