@@ -51,6 +51,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        session()->forget('doctor_logged_in');
         return redirect('/');
     }
 }
