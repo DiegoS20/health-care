@@ -15,12 +15,12 @@
                 </div>
                 <h2>Bienvenido</h2>
                 <form method="POST" action="{{ route('loginuser') }}">
-                    
+
                     <div class="input-field">
-                        <input id="email" type="email" class="validate" name="email" required autocomplete="email" autofocus>
+                        <input id="email" type="number" class="validate" name="email" required autocomplete="email" autofocus>
                         <label for="email">Ingrese su código</label>
                     </div>
-                    
+
                     <button type="submit" class="btn">Iniciar Sesión</button>
                 </form>
             </div>

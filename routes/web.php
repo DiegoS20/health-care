@@ -13,7 +13,8 @@ Route::get('/auth', function () {
     return view('auth.loginuser');
 })->name('loginuser');
 
-Route::prefix('dashboard')->group(function () {
+// Rutas protegidas por middleware
+Route::middleware(['authenticatedUser'])->prefix('dashboard')->group(function () {
     Route::get('/', function () {
         return view('dashboard.index');
     })->name('dashboard-index');
